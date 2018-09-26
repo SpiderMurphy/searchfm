@@ -3,7 +3,9 @@ package com.radio.search_fm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.radio.search_fm.views.ViewSearchActivity;
+
+public class MainActivity extends AppCompatActivity implements ViewSearchActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
