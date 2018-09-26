@@ -10,6 +10,6 @@ public class PresenterSearchArtist {
     }
 
     void searchArtistByName(String name){
-        
+
     }
 }
