@@ -17,7 +17,7 @@ public class ModelRequest<T> extends Request<T> {
     private final Class<T> mClass;
     private final Response.Listener<T> mListener;
 
-    public ModelRequest(Class<T> clazz, int method, String url, @Nullable Response.Listener<T> listener, @Nullable Response.ErrorListener errorListener) {
+    public ModelRequest(Class<T> clazz, int method, String url, @Nullable Response.Listener<T> listener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
 
         this.mClass = clazz;

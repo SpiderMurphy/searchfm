@@ -4,9 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.android.volley.Request;
+import com.radio.search_fm.entities.Artist;
+import com.radio.search_fm.entities.ArtistResult;
+import com.radio.search_fm.entities.ModelArtistResult;
+import com.radio.search_fm.network.ModelRequest;
+import com.radio.search_fm.network.RestClient;
 import com.radio.search_fm.presenter.PresenterSearchArtist;
 import com.radio.search_fm.views.ViewSearchActivity;
 
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements ViewSearchActivit
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
+
     }
 
     @Override
