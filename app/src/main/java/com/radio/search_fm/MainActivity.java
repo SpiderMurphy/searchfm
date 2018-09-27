@@ -3,6 +3,7 @@ package com.radio.search_fm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements ViewSearchActivit
 
         setSupportActionBar(mToolbar);
 
+        mPresenter = new PresenterSearchArtist(this);
     }
 
     @Override
@@ -46,6 +48,24 @@ public class MainActivity extends AppCompatActivity implements ViewSearchActivit
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_artist, menu);
 
+        setupSearchView((SearchView) menu.findItem(R.id.action_search).getActionView());
+
         return true;
+    }
+
+    private void setupSearchView(SearchView searchView) {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mPresenter.searchArtistByName(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 }

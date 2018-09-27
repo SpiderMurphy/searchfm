@@ -5,11 +5,11 @@ import com.radio.search_fm.views.ViewSearchActivity;
 public class PresenterSearchArtist {
     private ViewSearchActivity mView;
 
-    PresenterSearchArtist(ViewSearchActivity view) {
+    public PresenterSearchArtist(ViewSearchActivity view) {
         this.mView = view;
     }
 
-    void searchArtistByName(String name){
+    public void searchArtistByName(String name){
 
     }
 }
