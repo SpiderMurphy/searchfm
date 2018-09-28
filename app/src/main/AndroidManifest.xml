@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ArtistDetailActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTop">
 

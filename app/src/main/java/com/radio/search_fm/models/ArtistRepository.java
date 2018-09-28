@@ -1,6 +1,7 @@
 package com.radio.search_fm.models;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.android.volley.Request;
@@ -24,7 +25,7 @@ public class ArtistRepository implements Repository<Artist> {
     @Override
     public void query(Map<String, String> criteria, QueryResult<Artist> resultCallback) {
         // Artist name
-        String artistName = criteria.get(ARTIST_NAME);
+        String artistName = Uri.encode(criteria.get(ARTIST_NAME));
 
         RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,
@@ -36,7 +37,7 @@ public class ArtistRepository implements Repository<Artist> {
     @Override
     public void query(Map<String, String> criteria, QueryResult<Artist> resultCallback, QueryError errorCallback) {
         // Artist name
-        String artistName = criteria.get(ARTIST_NAME);
+        String artistName = Uri.encode(criteria.get(ARTIST_NAME));
 
         RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,

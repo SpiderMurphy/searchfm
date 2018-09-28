@@ -1,7 +1,6 @@
 package com.radio.search_fm.presenter;
 
 import com.radio.search_fm.entities.Artist;
-import com.radio.search_fm.models.ArtistDetailRepository;
 import com.radio.search_fm.models.ArtistRepository;
 import com.radio.search_fm.models.Repository;
 import com.radio.search_fm.views.ViewArtistDetail;

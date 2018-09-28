@@ -47,6 +47,6 @@ public class PresenterSearchArtistUnitTest {
         Mockito.verify(artistRepository, Mockito.times(1)).query(criteriaCaptor.capture(), Mockito.any());
 
         Map<String, String> expectedCriteria = criteriaCaptor.getValue();
-        assertEquals(true, expectedCriteria.containsKey(ArtistRepository.ARIST_NAME));
+        assertEquals(true, expectedCriteria.containsKey(ArtistRepository.ARTIST_NAME));
     }
 }

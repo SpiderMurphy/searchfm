@@ -9,6 +9,15 @@ public class Artist {
     private String image_small;
     private int streamable;
     private List<Image> image;
+    private Bio bio;
+
+    public Bio getBio() {
+        return bio;
+    }
+
+    public void setBio(Bio bio) {
+        this.bio = bio;
+    }
 
     public String getName() {
         return name;
