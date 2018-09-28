@@ -15,6 +15,7 @@ import com.radio.search_fm.R;
 import com.radio.search_fm.databinding.AdapterArtistEntryBinding;
 import com.radio.search_fm.entities.Artist;
 import com.radio.search_fm.models.ArtistDetailRepository;
+import com.radio.search_fm.models.ArtistRepository;
 import com.radio.search_fm.presenter.PresenterArtistList;
 import com.radio.search_fm.views.ViewArtistAdapter;
 
@@ -79,7 +80,7 @@ public class AdapterArtistItem extends RecyclerView.Adapter {
             if(artist == null) return;
 
             Intent intent = new Intent(itemView.getContext(), ArtistDetailActivity.class);
-            intent.putExtra(ArtistDetailRepository.ARTIST_MBID, artist.getMbid());
+            intent.putExtra(ArtistRepository.ARTIST_NAME, artist.getName());
 
             itemView.getContext().startActivity(intent);
         }

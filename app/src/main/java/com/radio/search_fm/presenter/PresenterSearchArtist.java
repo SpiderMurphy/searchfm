@@ -21,7 +21,7 @@ public class PresenterSearchArtist {
 
     public void searchArtistByName(String name, Repository.QueryResult<Artist> resultCallback){
         Map<String, String> criteria = new HashMap<>();
-        criteria.put(ArtistRepository.ARIST_NAME, name);
+        criteria.put(ArtistRepository.ARTIST_NAME, name);
 
         mRepository.query(criteria, resultCallback);
     }

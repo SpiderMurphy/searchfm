@@ -13,7 +13,7 @@ import com.radio.search_fm.network.RestClient;
 import java.util.Map;
 
 public class ArtistRepository implements Repository<Artist> {
-    public static String ARIST_NAME = "artist_name";
+    public static String ARTIST_NAME = "artist_name";
 
     private Context mContext;
 
@@ -24,7 +24,7 @@ public class ArtistRepository implements Repository<Artist> {
     @Override
     public void query(Map<String, String> criteria, QueryResult<Artist> resultCallback) {
         // Artist name
-        String artistName = criteria.get(ARIST_NAME);
+        String artistName = criteria.get(ARTIST_NAME);
 
         RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,
@@ -36,12 +36,17 @@ public class ArtistRepository implements Repository<Artist> {
     @Override
     public void query(Map<String, String> criteria, QueryResult<Artist> resultCallback, QueryError errorCallback) {
         // Artist name
-        String artistName = criteria.get(ARIST_NAME);
+        String artistName = criteria.get(ARTIST_NAME);
 
         RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,
                 "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + artistName +"&api_key=" + mContext.getString(R.string.api_key) + "&format=json",
                 r -> resultCallback.onQueryResult(r.getResults().getArtistmatches().getArtist()),
                 errorCallback::onError));
+    }
+
+    @Override
+    public void querySingle(Map<String, String> criteria, QueryResultSingle<Artist> resultCallback) {
+
     }
 }
