@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">search-fm</string>
+    <string name="button_search">search</string>
+    <string name="artist_name">Artist name</string>
+    <string name="api_key">36989cf98d0080744f3c95c75a79625f</string>
+    <string name="summary">Summary</string>
+    <string name="content">Content</string>
 </resources>
