@@ -1,5 +1,7 @@
 package com.radio.search_fm.presenter;
 
+import android.support.annotation.NonNull;
+
 import com.radio.search_fm.entities.Artist;
 import com.radio.search_fm.views.ViewArtistAdapter;
 
@@ -11,6 +13,10 @@ public class PresenterArtistList {
 
     public PresenterArtistList() {
         mArtists = new ArrayList<>();
+    }
+
+    public PresenterArtistList(@NonNull List<Artist> artists) {
+        this.mArtists = artists;
     }
 
     public int getCount() {
