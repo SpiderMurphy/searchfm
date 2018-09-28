@@ -32,4 +32,16 @@ public class ArtistRepository implements Repository<Artist> {
                 r -> resultCallback.onQueryResult(r.getResults().getArtistmatches().getArtist()),
                 null));
     }
+
+    @Override
+    public void query(Map<String, String> criteria, QueryResult<Artist> resultCallback, QueryError errorCallback) {
+        // Artist name
+        String artistName = criteria.get(ARIST_NAME);
+
+        RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
+                Request.Method.GET,
+                "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + artistName +"&api_key=" + mContext.getString(R.string.api_key) + "&format=json",
+                r -> resultCallback.onQueryResult(r.getResults().getArtistmatches().getArtist()),
+                errorCallback::onError));
+    }
 }
