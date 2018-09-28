@@ -1,18 +1,20 @@
 package com.radio.search_fm.adapter;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.radio.search_fm.ArtistDetailActivity;
 import com.radio.search_fm.R;
 import com.radio.search_fm.databinding.AdapterArtistEntryBinding;
 import com.radio.search_fm.entities.Artist;
+import com.radio.search_fm.models.ArtistDetailRepository;
 import com.radio.search_fm.presenter.PresenterArtistList;
 import com.radio.search_fm.views.ViewArtistAdapter;
 
@@ -38,6 +40,7 @@ public class AdapterArtistItem extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mPresenter.bindViewHolder((ViewArtistAdapter) holder, position);
+        holder.itemView.setOnClickListener(view -> ((ViewArtistAdapter) holder).onClickListener(position));
     }
 
     @Override
@@ -67,6 +70,18 @@ public class AdapterArtistItem extends RecyclerView.Adapter {
 
             Glide.with(itemView.getContext())
                     .load(artist.getImage().get(0).getUrl()).into(mImage);
+        }
+
+        @Override
+        public void onClickListener(int position) {
+            Artist artist = mPresenter.getArtist(position);
+
+            if(artist == null) return;
+
+            Intent intent = new Intent(itemView.getContext(), ArtistDetailActivity.class);
+            intent.putExtra(ArtistDetailRepository.ARTIST_MBID, artist.getMbid());
+
+            itemView.getContext().startActivity(intent);
         }
     }
 

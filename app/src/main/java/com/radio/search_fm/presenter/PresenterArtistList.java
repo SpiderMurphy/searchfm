@@ -34,4 +34,8 @@ public class PresenterArtistList {
     public void addArtists(List<Artist> artists) {
         mArtists.addAll(artists);
     }
+
+    public Artist getArtist(int position) {
+        return mArtists.get(position);
+    }
 }

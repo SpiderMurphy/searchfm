@@ -68,4 +68,10 @@ public class PresenterArtistListUnitTest {
         Artist exceptedArtist = artistArgumentCaptor.getValue();
         assertEquals("Test artist", exceptedArtist.getName());
     }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getArtist_With0Item_Exception() {
+        presenterArtistList = new PresenterArtistList();
+        presenterArtistList.getArtist(0);
+    }
 }
