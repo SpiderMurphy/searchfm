@@ -13,11 +13,17 @@ import com.radio.search_fm.network.RestClient;
 
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public class ArtistDetailRepository implements Repository<Artist> {
     public static String ARTIST_MBID = "artist-mbid";
 
     private Context mContext;
 
+    @Inject
+    RestClient mRestClient;
+
+    @Inject
     public ArtistDetailRepository(@NonNull Context context) {
         this.mContext = context;
     }
@@ -32,7 +38,7 @@ public class ArtistDetailRepository implements Repository<Artist> {
     public void querySingle(Map<String, String> criteria, QueryResultSingle<Artist> resultCallback) {
         String artistName = Uri.encode(criteria.get(ArtistRepository.ARTIST_NAME));
 
-        RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistInfo.class,
+        mRestClient.addRequest(new ModelRequest<>(ModelArtistInfo.class,
                 Request.Method.GET,
                 "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=" +
                         mContext.getString(R.string.api_key) + "&format=json",

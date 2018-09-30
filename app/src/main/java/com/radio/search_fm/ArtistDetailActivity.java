@@ -42,7 +42,10 @@ public class ArtistDetailActivity extends AppCompatActivity implements ViewArtis
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mPresenter = new PresenterArtistDetail(this, new ArtistDetailRepository(this));
+        ArtistDetailRepository artistDetailRepository = new ArtistDetailRepository(this);
+        ((SearchFm)getApplication()).getRestComponent().inject(artistDetailRepository);
+
+        mPresenter = new PresenterArtistDetail(this, artistDetailRepository);
         mPresenter.getArtistInfo(artistName, this::onArtistDetailReceived);
     }
 
