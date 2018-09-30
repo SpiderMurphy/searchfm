@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements ViewSearchActivit
 
         setSupportActionBar(mToolbar);
 
-        mPresenter = new PresenterSearchArtist(this, new ArtistRepository(this));
+        ArtistRepository artistRepository = new ArtistRepository(this);
+        ((SearchFm)getApplication()).getRestComponent().inject(artistRepository);
+
+        mPresenter = new PresenterSearchArtist(this, artistRepository);
         mPresenterList = new PresenterArtistList();
 
         mRwArtists.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));

@@ -1,11 +1,13 @@
 package com.radio.search_fm.models;
 
+import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.android.volley.Request;
 import com.radio.search_fm.R;
+import com.radio.search_fm.SearchFm;
 import com.radio.search_fm.entities.Artist;
 import com.radio.search_fm.entities.ModelArtistResult;
 import com.radio.search_fm.network.ModelRequest;
@@ -13,11 +15,17 @@ import com.radio.search_fm.network.RestClient;
 
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public class ArtistRepository implements Repository<Artist> {
     public static String ARTIST_NAME = "artist_name";
 
     private Context mContext;
 
+    @Inject
+    RestClient mRestClient;
+
+    @Inject
     public ArtistRepository(@NonNull Context context) {
         this.mContext = context;
     }
@@ -27,7 +35,7 @@ public class ArtistRepository implements Repository<Artist> {
         // Artist name
         String artistName = Uri.encode(criteria.get(ARTIST_NAME));
 
-        RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
+        mRestClient.addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,
                 "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + artistName +"&api_key=" + mContext.getString(R.string.api_key) + "&format=json",
                 r -> resultCallback.onQueryResult(r.getResults().getArtistmatches().getArtist()),
@@ -39,7 +47,7 @@ public class ArtistRepository implements Repository<Artist> {
         // Artist name
         String artistName = Uri.encode(criteria.get(ARTIST_NAME));
 
-        RestClient.getInstance(mContext).addRequest(new ModelRequest<>(ModelArtistResult.class,
+        mRestClient.addRequest(new ModelRequest<>(ModelArtistResult.class,
                 Request.Method.GET,
                 "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + artistName +"&api_key=" + mContext.getString(R.string.api_key) + "&format=json",
                 r -> resultCallback.onQueryResult(r.getResults().getArtistmatches().getArtist()),
