@@ -17,10 +17,10 @@ public class PresenterArtistDetail {
         this.mRepository = repository;
     }
 
-    public void getArtistInfo(String name, Repository.QueryResultSingle<Artist> resultCallback){
+    public void getArtistInfo(String name){
         Map<String, String> criteria = new HashMap<>();
         criteria.put(ArtistRepository.ARTIST_NAME, name);
 
-        mRepository.querySingle(criteria, resultCallback);
+        mRepository.querySingle(criteria, mView::onArtistDetailReceived);
     }
 }

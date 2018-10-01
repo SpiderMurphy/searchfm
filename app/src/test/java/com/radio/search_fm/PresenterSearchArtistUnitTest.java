@@ -39,10 +39,9 @@ public class PresenterSearchArtistUnitTest {
         Repository<Artist> artistRepository = Mockito.mock(Repository.class);
         ViewSearchActivity viewSearchActivity = Mockito.mock(ViewSearchActivity.class);
 
-        Mockito.doAnswer(invocation -> null).when(artistRepository).query(Mockito.anyMap(), Mockito.any());
         presenterSearchArtist = new PresenterSearchArtist(viewSearchActivity, artistRepository);
 
-        presenterSearchArtist.searchArtistByName("Test artist", Mockito.mock(Repository.QueryResult.class));
+        presenterSearchArtist.searchArtistByName("Test artist");
         ArgumentCaptor<Map<String, String>> criteriaCaptor = ArgumentCaptor.forClass(Map.class);
         Mockito.verify(artistRepository, Mockito.times(1)).query(criteriaCaptor.capture(), Mockito.any());
 

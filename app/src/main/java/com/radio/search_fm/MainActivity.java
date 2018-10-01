@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ViewSearchActivit
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                mPresenter.searchArtistByName(query, MainActivity.this::onArtistSearchResult);
+                mPresenter.searchArtistByName(query);
 
                 return false;
             }

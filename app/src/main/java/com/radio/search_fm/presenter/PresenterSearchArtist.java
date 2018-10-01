@@ -19,10 +19,10 @@ public class PresenterSearchArtist {
         this.mRepository = repository;
     }
 
-    public void searchArtistByName(String name, Repository.QueryResult<Artist> resultCallback){
+    public void searchArtistByName(String name){
         Map<String, String> criteria = new HashMap<>();
         criteria.put(ArtistRepository.ARTIST_NAME, name);
 
-        mRepository.query(criteria, resultCallback);
+        mRepository.query(criteria, mView::onArtistSearchResult);
     }
 }

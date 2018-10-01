@@ -46,7 +46,7 @@ public class ArtistDetailActivity extends AppCompatActivity implements ViewArtis
         ((SearchFm)getApplication()).getRestComponent().inject(artistDetailRepository);
 
         mPresenter = new PresenterArtistDetail(this, artistDetailRepository);
-        mPresenter.getArtistInfo(artistName, this::onArtistDetailReceived);
+        mPresenter.getArtistInfo(artistName);
     }
 
     @Override
