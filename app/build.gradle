@@ -25,7 +25,10 @@ android {
         enabled true
     }
     testOptions {
-        unitTests.returnDefaultValues = true
+        unitTests {
+            includeAndroidResources true
+            returnDefaultValues true
+        }
     }
 }
 
@@ -71,6 +74,8 @@ dependencies {
 
     // Mockito
     testImplementation 'org.mockito:mockito-core:2.7.22'
+
+    testImplementation "org.robolectric:robolectric:3.8"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
